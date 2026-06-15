@@ -1,1 +1,10 @@
+{
+  "ID": "OP",
+  "NAME": "OP_REINRAUM",
+  "COLOR": "yellow",
+  "ROLE": "EDIT",
+  "DESCRIPTION": "Reinraum für OP. Änderungen werden später nach SL übernommen.",
+  "LAST_UPDATE": "",
+  "CONTENT": {}
+}
 
