@@ -1,1 +1,10 @@
+{
+  "ID": "BK",
+  "NAME": "BACKUP_STATE",
+  "COLOR": "red",
+  "ROLE": "BACKUP",
+  "DESCRIPTION": "Letzte funktionierende Version. Unveränderbar. Rettungspunkt.",
+  "LAST_UPDATE": "",
+  "CONTENT": {}
+}
 
