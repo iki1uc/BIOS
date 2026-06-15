@@ -19,9 +19,16 @@ jobs:
         run: cat root.yml
 
       - name: NC-STRUKTUR PRÜFEN
-        run: ls -R NC
+        run: |
+          test -f NC/RW/state.json
+          test -f NC/SL/edit.json
+          test -f NC/BK/backup.json
+          test -f NC/OP/OP.json
 
       - name: SIGNAL-ANALYSE
         run: |
-          echo "SIGNAL-ANALYSE:"
-          grep -q "SIGNAL: \"ACTIVE\"" root.yml && echo "SYSTEM = JA" || echo "SYSTEM = NEIN"
+          grep -q 'SIGNAL: "ACTIVE"' root.yml
+          grep -q 'AUTOSAVE: "ON"' root.yml
+          grep -q 'AUTOLOAD: "ON"' root.yml
+          grep -q 'SCAN: "ON"' root.yml
+          grep -q 'HOTSWAP: "ON"' root.yml
