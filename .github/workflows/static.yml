@@ -1,27 +1,27 @@
-name: NC RESPO ENGINE
+name: NC STATIC CHECK
 
 on:
   push:
     paths:
+      - "root.yml"
       - "NC/**"
-      - ".github/workflows/static.yml"
   workflow_dispatch:
 
 jobs:
-  respo:
+  static_check:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: ROOT-SIGNAL LADEN
-        run: cat .github/workflows/static.yml
+        run: cat root.yml
 
-      - name: SCAN
+      - name: NC-STRUKTUR PRÜFEN
         run: ls -R NC
 
-      - name: AUTOSAVE
-        run: cp NC/RW/state.json NC/BK/backup.json
-
-      - name: AUTOLOAD
-        run: cp NC/SL/edit.json NC/RW/state.json
+      - name: SIGNAL-ANALYSE
+        run: |
+          echo "SIGNAL-ANALYSE:"
+          grep -q "ACTIVE" root.yml && echo "SYSTEM = JA" || echo "SYSTEM = NEIN"
