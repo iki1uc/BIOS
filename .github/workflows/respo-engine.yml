@@ -35,4 +35,3 @@ jobs:
       - name: SCAN
         if: steps.signal.outputs.signal == 'YES'
         run: ls -R NC
-
