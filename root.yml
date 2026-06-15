@@ -1,1 +1,20 @@
+ROOT:
+  SIGNAL: "ACTIVE"
+  STATE: "REAL"
+
+FLOW:
+  AUTOSAVE: "ON"
+  AUTOLOAD: "ON"
+  SCAN: "ON"
+  HOTSWAP: "ON"
+
+RESPO:
+  ALT: "BK"
+  IST: "RW"
+  SOLL: "SL"
+  NEU: "OP"
+
+BIOS:
+  ROLE: "ROOT"
+  AUTHORITY: "ABSOLUTE"
 
