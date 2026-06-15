@@ -1,1 +1,9 @@
-
+{
+  "ID": "RW",
+  "NAME": "RAW_STATE",
+  "COLOR": "green",
+  "ROLE": "IST",
+  "DESCRIPTION": "Unveränderter Zustand. System-Wahrheit. Basis für alle Vergleiche.",
+  "LAST_UPDATE": "",
+  "CONTENT": {}
+}
