@@ -1,1 +1,38 @@
+name: NC RESPO ENGINE
+
+on:
+  workflow_dispatch:
+
+jobs:
+  engine:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: ROOT-SIGNAL PRÜFEN
+        id: signal
+        run: |
+          if grep -q "SIGNAL: \"ACTIVE\"" root.yml; then
+            echo "signal=YES" >> $GITHUB_OUTPUT
+          else
+            echo "signal=NO" >> $GITHUB_OUTPUT
+          fi
+
+      - name: ABBRUCH WENN SIGNAL = NEIN
+        if: steps.signal.outputs.signal == 'NO'
+        run: echo "ROOT SIGNAL = NEIN → ENGINE STOP"
+
+      - name: AUTOSAVE (RW -> BK)
+        if: steps.signal.outputs.signal == 'YES'
+        run: cp NC/RW/state.json NC/BK/backup.json
+
+      - name: AUTOLOAD (SL -> RW)
+        if: steps.signal.outputs.signal == 'YES'
+        run: cp NC/SL/edit.json NC/RW/state.json
+
+      - name: SCAN
+        if: steps.signal.outputs.signal == 'YES'
+        run: ls -R NC
 
