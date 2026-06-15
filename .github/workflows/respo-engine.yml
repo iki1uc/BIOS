@@ -11,27 +11,56 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: ROOT-SIGNAL PRÜFEN
-        id: signal
+      # --- BIOS ROOT CHECK ---
+      - name: BIOS PRÜFEN
+        id: bios
         run: |
-          if grep -q 'SIGNAL: "ACTIVE"' root.yml; then
-            echo "signal=YES" >> $GITHUB_OUTPUT
+          if grep -q 'ROLE: "ROOT"' NC_STATIC_ROOT.yml; then
+            echo "bios=OK" >> $GITHUB_OUTPUT
           else
-            echo "signal=NO" >> $GITHUB_OUTPUT
+            echo "bios=FAIL" >> $GITHUB_OUTPUT
           fi
 
-      - name: STOP WENN SIGNAL = NEIN
-        if: steps.signal.outputs.signal == 'NO'
+      - name: STOP WENN BIOS FAIL
+        if: steps.bios.outputs.bios == 'FAIL'
         run: exit 1
 
+      # --- REAL STATE CHECK ---
+      - name: REAL STATE PRÜFEN
+        id: real
+        run: |
+          if [ -f NC/RW/state.json ] && [ -f NC/SL/edit.json ] && [ -f NC/BK/backup.json ] && [ -f NC/OP/OP.json ]; then
+            echo "real=OK" >> $GITHUB_OUTPUT
+          else
+            echo "real=FAIL" >> $GITHUB_OUTPUT
+          fi
+
+      - name: STOP WENN REAL FAIL
+        if: steps.real.outputs.real == 'FAIL'
+        run: exit 1
+
+      # --- TECH CHECK ---
+      - name: TECH PRÜFEN
+        id: tech
+        run: |
+          if [ -d NC/TECH ]; then
+            echo "tech=OK" >> $GITHUB_OUTPUT
+          else
+            echo "tech=FAIL" >> $GITHUB_OUTPUT
+          fi
+
+      - name: STOP WENN TECH FAIL
+        if: steps.tech.outputs.tech == 'FAIL'
+        run: exit 1
+
+      # --- AUTOSAVE ---
       - name: AUTOSAVE (RW -> BK)
-        if: steps.signal.outputs.signal == 'YES'
         run: cp NC/RW/state.json NC/BK/backup.json
 
+      # --- AUTOLOAD ---
       - name: AUTOLOAD (SL -> RW)
-        if: steps.signal.outputs.signal == 'YES'
         run: cp NC/SL/edit.json NC/RW/state.json
 
+      # --- SCAN ---
       - name: SCAN
-        if: steps.signal.outputs.signal == 'YES'
         run: ls -R NC
