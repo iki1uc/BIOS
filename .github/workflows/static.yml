@@ -24,4 +24,4 @@ jobs:
       - name: SIGNAL-ANALYSE
         run: |
           echo "SIGNAL-ANALYSE:"
-          grep -q "ACTIVE" root.yml && echo "SYSTEM = JA" || echo "SYSTEM = NEIN"
+          grep -q "SIGNAL: \"ACTIVE\"" root.yml && echo "SYSTEM = JA" || echo "SYSTEM = NEIN"
