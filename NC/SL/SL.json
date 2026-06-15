@@ -1,1 +1,10 @@
+{
+  "ID": "SL",
+  "NAME": "SOLL_STATE",
+  "COLOR": "yellow",
+  "ROLE": "SOLL",
+  "DESCRIPTION": "Bearbeiteter Zustand. OP-Editierbereich. Noch nicht live.",
+  "LAST_UPDATE": "",
+  "CONTENT": {}
+}
 
