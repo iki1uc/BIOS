@@ -1,1 +1,12 @@
+{
+  "ID": "SL",
+  "NAME": "SOLL_STATE",
+  "COLOR": "YELLOW",
+  "ROLE": "SOLL",
+  "LAGE_NC": "/NC/SL/edit.json",
+  "LAGE_BIOS": "PENDING_CONFIG",
+  "DESCRIPTION": "NEUE WERTE, DIE OP SETZT. WIRD ERST NACH FREIGABE AKTIV.",
+  "LAST_UPDATE": "",
+  "CONTENT": {}
+}
 
