@@ -1,15 +1,27 @@
-NC:
-  SIGNAL: "ACTIVE"
-  VERSION: "1.0"
-  RESPO:
-    RW: "ACTIVE_CONFIG"
-    SL: "PENDING_CONFIG"
-    BK: "LAST_KNOWN_GOOD"
-    OP: "TEMP_BUFFER"
+name: NC RESPO ENGINE
 
-FLOW:
-  AUTOSAVE: "ON"
-  AUTOLOAD: "ON"
-  SCAN: "ON"
-  HOTSWAP: "ON"
-  DIRECTION: "FORWARD"   # oder "REVERSE"
+on:
+  push:
+    paths:
+      - "NC/**"
+      - ".github/workflows/static.yml"
+  workflow_dispatch:
+
+jobs:
+  respo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: ROOT-SIGNAL LADEN
+        run: cat .github/workflows/static.yml
+
+      - name: SCAN
+        run: ls -R NC
+
+      - name: AUTOSAVE
+        run: cp NC/RW/state.json NC/BK/backup.json
+
+      - name: AUTOLOAD
+        run: cp NC/SL/edit.json NC/RW/state.json
