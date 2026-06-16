@@ -1,10 +1,11 @@
 {
   "ID": "SL",
   "NAME": "SOLL_STATE",
-  "COLOR": "yellow",
+  "COLOR": "YELLOW",
   "ROLE": "SOLL",
-  "DESCRIPTION": "Bearbeiteter Zustand. OP-Editierbereich. Noch nicht live.",
+  "LAGE_NC": "/NC/SL/edit.json",
+  "LAGE_BIOS": "PENDING_CONFIG",
+  "DESCRIPTION": "NEUE WERTE, DIE OP SETZT. WIRD ERST NACH FREIGABE AKTIV.",
   "LAST_UPDATE": "",
   "CONTENT": {}
 }
-
