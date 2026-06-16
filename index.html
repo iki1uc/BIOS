@@ -3,15 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>NC ROOT</title>
+  <style>
+    body { font-family: Arial; background:#111; color:#eee; padding:20px; }
+    h1 { color:#4af; }
+    ul { list-style-type:none; padding:0; }
+    li { margin:6px 0; }
+    .rw { color:#0f0; }
+    .sl { color:#ff0; }
+    .bk { color:#f00; }
+    .op { color:#ff0; }
+  </style>
 </head>
 <body>
+
 <h1>NC ROOT STATUS</h1>
+
 <ul>
-  <li>RW → NC/RW/state.json</li>
-  <li>SL → NC/SL/edit.json</li>
-  <li>BK → NC/BK/backup.json</li>
-  <li>OP → NC/OP/OP.json</li>
+  <li class="rw">RW → <a href="NC/RW/state.json">NC/RW/state.json</a></li>
+  <li class="sl">SL → <a href="NC/SL/edit.json">NC/SL/edit.json</a></li>
+  <li class="bk">BK → <a href="NC/BK/backup.json">NC/BK/backup.json</a></li>
+  <li class="op">OP → <a href="NC/OP/OP.json">NC/OP/OP.json</a></li>
 </ul>
-<p>root.yml → Signalsteuerung</p>
+
+<p>root.yml → <a href="root.yml">Signalsteuerung</a></p>
+
 </body>
 </html>
